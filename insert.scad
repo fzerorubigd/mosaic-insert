@@ -7,7 +7,7 @@ g_b_print_lid = true;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "card_tiles_x1"; 
+g_isolated_print_box = ""; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -109,7 +109,7 @@ goods_depth = box_depth - tiles_depth;
 // Tiles 
 tile_cards_width = goods_width;
 tile_cards_height = goods_height;
-tile_cards_depth = goods_depth;
+tile_cards_depth = tiles_depth;
 
 echo (goods_width,"x",goods_height);
 data =
