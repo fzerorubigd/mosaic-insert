@@ -7,7 +7,7 @@ g_b_print_lid = true;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = ""; 
+g_isolated_print_box = "player_top_x3"; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -177,14 +177,14 @@ data =
             ],
             [ BOX_COMPONENT,                             
                 [
-                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_big_h, round_r, city_d] ],  
-                    [POSITION_XY, [0,hex_r-gw/2]],
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_big_h, round_r-gw, city_d] ],  
+                    [POSITION_XY, [0,hex_r]],
                 ]
             ],
             [ BOX_COMPONENT,                             
                 [
-                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_small_h, round_r, city_d] ],  
-                    [POSITION_XY, [round_big_h+gw,hex_r-gw/2]],
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_small_h, round_r-gw, city_d] ],  
+                    [POSITION_XY, [round_big_h+gw,hex_r]],
                 ]
             ]
         ]
@@ -253,14 +253,14 @@ data =
             ],
             [ BOX_COMPONENT,                             
                 [
-                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_big_h, round_r, city_d] ],  
-                    [POSITION_XY, [0,hex_r-gw/2]],
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_big_h, round_r-gw, city_d] ],  
+                    [POSITION_XY, [0,hex_r]],
                 ]
             ],
             [ BOX_COMPONENT,                             
                 [
-                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_small_h, round_r, city_d] ],  
-                    [POSITION_XY, [round_big_h+gw,hex_r-gw/2]],
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ round_small_h, round_r-gw, city_d] ],  
+                    [POSITION_XY, [round_big_h+gw,hex_r]],
                 ]
             ]
         ]
