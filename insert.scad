@@ -7,7 +7,7 @@ g_b_print_lid = true;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "other_cards_bottom_x2"; 
+g_isolated_print_box = "card_tiles_x1"; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -33,7 +33,7 @@ g_tolerance = 0.15;
 g_tolerance_detents_pos = 0.1;
 
 g_lid_solid = t;
-g_lid_label = t;
+g_lid_label = f;
 
 function getLidAttributes(txt, rotation = 0, size = 9, solid=g_lid_solid) = (g_lid_label) ? [
     [ LABEL,
@@ -53,7 +53,8 @@ gw4 = gw * 4;
 
 box_width = 220;
 box_height = 309;
-box_depth = 62;
+city_d = 28+gw;
+box_depth = city_d * 2;
 
 hex_r = 39;
 hex_w = 34;
@@ -61,7 +62,7 @@ pedestal_h = 5;
 
 // Player 
 
-city_d = 28+gw;
+
 military_w = 28;
 board_width = 195;
 player_height = (hex_w+gw)*4+gw+(military_w+gw);
@@ -71,7 +72,7 @@ round_small_h = 2*((player_height-military_w-gw2)/3)-gw2;
 round_big_h = player_height - military_w - gw4 - round_small_h;
 
 // Resources
-resources_depth = 26;
+resources_depth = box_width - board_width;
 resources_height = 95;
 resource_width = 50;
 
@@ -91,7 +92,26 @@ cards_height = 93;
 tech_cards_depth = 45;
 other_cards_depth = tech_cards_depth / 3;
 
-echo("Cards, ", cards_width);
+// Leader cards and first player
+leader_cards_width = cards_width * 2;
+leader_cards_height = cards_height;
+leader_cards_depth = box_depth - tech_cards_depth;
+
+// Tiles 
+tiles_depth = 35;
+tiles_width = 45;
+tiles_height = 70;
+// Good Tokens 
+goods_width = board_width - cards_height;
+goods_height = box_height - player_height;
+goods_depth = box_depth - tiles_depth;
+
+// Tiles 
+tile_cards_width = goods_width;
+tile_cards_height = goods_height;
+tile_cards_depth = goods_depth;
+
+echo (goods_width,"x",goods_height);
 data =
 [
     [   "player_bottom_x3",                            
@@ -341,8 +361,64 @@ data =
                 ]
             ],
         ]
-     ]
-    
+     ],
+     ["leader_cards_first_player_x1", 
+        [
+            [BOX_SIZE_XYZ, [leader_cards_height, leader_cards_width, leader_cards_depth]],
+            [ BOX_LID,
+                getLidAttributes(txt="Leaders"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ leader_cards_height-gw2, leader_cards_width-gw2, tech_cards_depth] ],
+                ]
+            ],
+        ]
+     ],
+      ["good_tiles_x1", 
+        [
+            [BOX_SIZE_XYZ, [goods_height, goods_width, goods_depth]],
+            [ BOX_NO_LID_B, true],
+            [ BOX_STACKABLE_B, true],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ goods_height-gw2, goods_width-gw2, goods_depth] ],
+                ]
+            ],
+        ]
+     ],
+     ["card_tiles_x1", 
+        [
+            [BOX_SIZE_XYZ, [tile_cards_height, tile_cards_width, tile_cards_depth]],
+            [ BOX_LID,
+                getLidAttributes(txt="Tiles"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ tiles_width+gw4+gw2, tile_cards_width-gw2, tile_cards_depth] ],
+                    [POSITION_XY, [0,0]]
+                ]
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ tiles_height+gw4+gw, tiles_width+gw3, tile_cards_depth] ],
+                    [POSITION_XY, [ tiles_width+gw4+gw2+gw,0]]
+                ]
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ tiles_height+gw4+gw, tiles_width+gw2, tile_cards_depth] ],
+                    [POSITION_XY, [ tiles_width+gw4+gw2+gw,tiles_width+gw4]]
+                ]
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ 30, 50, tile_cards_depth] ],
+                    [POSITION_XY, [ CENTER, CENTER]]
+                ]
+            ],
+        ]
+     ],  
 ];
 
 

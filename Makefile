@@ -3,7 +3,7 @@ COMPONENT = $(word 2, $(SPLIT))
 FILE = insert.scad
 TARGET = game-insert.zip
 
-all: player_top_x3 player_bottom_x3 resources_x3 cache_and_fish_x1 money_x1 cards_tech_x1 other_cards_top_x1 other_cards_bottom_x2
+all: player_top_x3 player_bottom_x3 resources_x3 cache_and_fish_x1 money_x1 cards_tech_x1 other_cards_top_x1 other_cards_bottom_x2 leader_cards_first_player_x1 good_tiles_x1 card_tiles_x1
 	@echo Done!
 
 zip: clean all
@@ -17,6 +17,9 @@ money_x1: box-money_x1 lid-money_x1
 cards_tech_x1: box-cards_tech_x1 lid-cards_tech_x1
 other_cards_top_x1: box-other_cards_top_x1 lid-other_cards_top_x1
 other_cards_bottom_x2: box-other_cards_bottom_x2
+leader_cards_first_player_x1: box-leader_cards_first_player_x1 lid-leader_cards_first_player_x1
+good_tiles_x1: box-good_tiles_x1
+card_tiles_x1: box-card_tiles_x1 lid-card_tiles_x1
 
 dist: 
 	mkdir -p dist
