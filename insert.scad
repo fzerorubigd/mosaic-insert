@@ -7,7 +7,7 @@ g_b_print_lid = true;
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = ""; 
+g_isolated_print_box = "other_cards_bottom_x2"; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -32,10 +32,10 @@ g_tolerance = 0.15;
 // The larger the value, the bigger the gap between the lid and the box.
 g_tolerance_detents_pos = 0.1;
 
-g_lid_solid = f;
+g_lid_solid = t;
 g_lid_label = t;
 
-function getLidAttributes(txt, rotation = 0, size = 10, solid=g_lid_solid) = (g_lid_label) ? [
+function getLidAttributes(txt, rotation = 0, size = 9, solid=g_lid_solid) = (g_lid_label) ? [
     [ LABEL,
         [
             [ LBL_TEXT,    txt],
@@ -52,12 +52,14 @@ gw3 = gw * 3;
 gw4 = gw * 4;
 
 box_width = 220;
-box_height = 310;
+box_height = 309;
 box_depth = 62;
 
 hex_r = 39;
 hex_w = 34;
 pedestal_h = 5;
+
+// Player 
 
 city_d = 28+gw;
 military_w = 28;
@@ -68,6 +70,28 @@ round_r = 24;
 round_small_h = 2*((player_height-military_w-gw2)/3)-gw2;
 round_big_h = player_height - military_w - gw4 - round_small_h;
 
+// Resources
+resources_depth = 26;
+resources_height = 95;
+resource_width = 50;
+
+// Cache and Fish
+cache_depth = resources_depth;
+cache_height = resources_height;
+cache_width = 50;
+
+// Money 
+money_depth = resources_depth;
+money_height = resources_height;
+money_width = box_height - (3 * resource_width) - cache_width;
+
+// Cards 
+cards_width = (box_height - player_height) / 2;
+cards_height = 93;
+tech_cards_depth = 45;
+other_cards_depth = tech_cards_depth / 3;
+
+echo("Cards, ", cards_width);
 data =
 [
     [   "player_bottom_x3",                            
@@ -220,8 +244,104 @@ data =
                 ]
             ]
         ]
-    ]
-    
+    ],
+    [   "resources_x3",
+        [
+            [ BOX_SIZE_XYZ, [resources_height, resource_width, resources_depth] ],
+            [ BOX_LID,
+                getLidAttributes(txt="Resources"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_NUM_COMPARTMENTS_XY, [2, 1] ],
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ (resources_height-gw3)/2, resource_width-gw2, resources_depth] ],
+                ]
+            ]
+         ]
+     ],
+     [   "cache_and_fish_x1",                            
+        [
+            [ BOX_SIZE_XYZ, [cache_height, cache_width, cache_depth] ],
+            [ BOX_LID,
+                getLidAttributes(txt="Cache & Fish"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ (cache_height-gw3)/3, cache_width-gw2, cache_depth] ],  
+                    [POSITION_XY, [0,0]],
+                ]
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ 2*((cache_height-gw3)/3), cache_width-gw2, cache_depth] ],  
+                    [POSITION_XY, [(cache_height-gw3)/3+gw,0]],
+                ]
+            ]
+         ]
+     ],
+     [   "money_x1",                            
+        [
+            [ BOX_SIZE_XYZ, [money_height, money_width, money_depth] ],
+            [ BOX_LID,
+                getLidAttributes(txt="Coins"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_NUM_COMPARTMENTS_XY, [2, 1] ],
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ (money_height-gw3)/2, ((money_width-gw3)*2)/5, money_depth] ],
+                    [POSITION_XY, [0,0]]
+                ]
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_NUM_COMPARTMENTS_XY, [2, 1] ],
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ (money_height-gw3)/2, ((money_width-gw3)*3)/5, money_depth] ],
+                    [POSITION_XY, [0,((money_width-gw3)*2)/5+gw]]
+                ]
+            ],
+         ]
+     ], 
+     ["cards_tech_x1", 
+        [
+            [BOX_SIZE_XYZ, [cards_height, cards_width, tech_cards_depth]],
+            [ BOX_LID,
+                getLidAttributes(txt="Technologies"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ cards_height-gw2, cards_width-gw2, tech_cards_depth] ],
+                    [CMP_CUTOUT_SIDES_4B, [f,f,f,t]]
+                ]
+            ],
+        ]
+     ],
+     ["other_cards_top_x1", 
+        [
+            [BOX_SIZE_XYZ, [cards_height, cards_width, other_cards_depth]],
+            [ BOX_LID,
+                getLidAttributes(txt="Cards"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ cards_height-gw2, cards_width-gw2, tech_cards_depth] ],
+                    [CMP_CUTOUT_SIDES_4B, [f,f,f,t]]
+                ]
+            ],
+        ]
+     ],
+     ["other_cards_bottom_x2", 
+        [
+            [BOX_SIZE_XYZ, [cards_height, cards_width, other_cards_depth]],
+            [ BOX_NO_LID_B, true],
+            [ BOX_STACKABLE_B, true],  
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ cards_height-gw2, cards_width-gw2, tech_cards_depth] ],
+                    [CMP_CUTOUT_SIDES_4B, [f,f,f,t]]
+                ]
+            ],
+        ]
+     ]
     
 ];
 
