@@ -13,7 +13,7 @@ player_top_x3: box-player_top_x3 lid-player_top_x3
 player_bottom_x3: box-player_bottom_x3
 resources_x3: box-resources_x3 lid-resources_x3
 cache_and_fish_x1: box-cache_and_fish_x1 lid-cache_and_fish_x1
-money_x1: box-money_x1 lid-money_x1
+money_x1: box-money_no_compartment_x1 lid-money_no_compartment_x1 box-money_with_compartment_x1
 cards_tech_x1: box-cards_tech_x1 lid-cards_tech_x1
 other_cards_top_x1: box-other_cards_top_x1 lid-other_cards_top_x1
 other_cards_bottom_x2: box-other_cards_bottom_x2

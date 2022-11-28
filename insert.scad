@@ -1,13 +1,13 @@
 include <bit/boardgame_insert_toolkit_lib.2.scad>;
 
 // determines whether lids are output.
-g_b_print_lid = true;
+g_b_print_lid = f;
 
 // determines whether boxes are output.
 g_b_print_box = true; 
 
 // Focus on one box
-g_isolated_print_box = "player_top_x3"; 
+g_isolated_print_box = ""; 
 
 // Used to visualize how all of the boxes fit together. 
 g_b_visualization = f;          
@@ -299,7 +299,7 @@ data =
             ]
          ]
      ],
-     [   "money_x1",                            
+     [   "money_with_compartment_x1",                            
         [
             [ BOX_SIZE_XYZ, [money_height, money_width, money_depth] ],
             [ BOX_LID,
@@ -317,6 +317,20 @@ data =
                     [ CMP_NUM_COMPARTMENTS_XY, [2, 1] ],
                     [ CMP_COMPARTMENT_SIZE_XYZ, [ (money_height-gw3)/2, ((money_width-gw3)*3)/5, money_depth] ],
                     [POSITION_XY, [0,((money_width-gw3)*2)/5+gw]]
+                ]
+            ],
+         ]
+     ], 
+     [   "money_no_compartment_x1",                            
+        [
+            [ BOX_SIZE_XYZ, [money_height, money_width, money_depth] ],
+            [ BOX_LID,
+                getLidAttributes(txt="Coins"),
+            ],
+            [ BOX_COMPONENT,
+                [
+                    [ CMP_COMPARTMENT_SIZE_XYZ, [ money_height-gw2, money_width-gw2, money_depth] ],
+                    [POSITION_XY, [0,0]]
                 ]
             ],
          ]
