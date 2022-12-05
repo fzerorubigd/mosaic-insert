@@ -22,6 +22,27 @@ The cards holder is too tight, and sleeved cards never fit there.
 The coin box with compartments, can not hold all the coin, but the other alternate version without compartment, fits all the coin. You need one of those, and the lid for both is the same. There are boxes that can hold the extra coins Wonder hex tiles could go with wonder tiles or the starting tile in **leader_cards_first_player_x1** box.
 
 Also the resource boxes (**resources_x3**) and the coin box (**money_with_compartment_x1** **OR** **money_no_compartment_x1**) and the cache and fish box (**cache_and_fish_x1**) need to be stored vertically, in the space next to the board.
+
+## Images
+
+<details>
+    <summary>My print result</summary><details>
+    <img src="images/cards-and-tokens.jpg" >
+    <img src="images/cards-stack.jpg" >
+    <img src="images/cards.jpg" >
+    <img src="images/closed-box.jpg" >
+    <img src="images/full-2.jpg" >
+    <img src="images/full.jpg" >
+    <img src="images/lid-under.jpg" >
+    <img src="images/players-stacked.jpg" >
+    <img src="images/players.jpg" >
+    <img src="images/tokens-tiles.jpg" >
+    <img src="images/vertical-boards.jpg" >
+    <img src="images/vertical.jpg" >
+</details>
+
+- My copy misses a punch board, asked the Forbidden games, no answer yet, so the box with the tiles is half empty. it should be full, I tested the size using the tiles that I have
+- I used two different printer to print theses, mine was broken at the time, and the second half is printed using mine (the "stronger" white boxes) so the quality is not the same in these pictures. 
 ## Links
 
 Created using [The Boardgame Insert Toolkit](https://github.com/dppdppd/The-Boardgame-Insert-Toolkit) 
