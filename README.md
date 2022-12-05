@@ -26,7 +26,7 @@ Also the resource boxes (**resources_x3**) and the coin box (**money_with_compar
 ## Images
 
 <details>
-    <summary>My print result</summary><details>
+    <summary>My print result</summary>
     <img src="images/cards-and-tokens.jpg" >
     <img src="images/cards-stack.jpg" >
     <img src="images/cards.jpg" >
